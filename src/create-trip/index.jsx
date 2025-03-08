@@ -23,6 +23,7 @@ import {
 } from "@/components/ui/dialog";
 import { useGoogleLogin } from "@react-oauth/google";
 import { db } from "@/service/firebaseConfig";
+import { useNavigate} from "react-router-dom";
 
 function CreateTrip() {
   const apiKey = import.meta.env.VITE_GOMAPS_API_KEY;
@@ -30,7 +31,7 @@ function CreateTrip() {
   const [suggestions, setSuggestions] = useState([]);
   const [loading, setLoading]=useState(false);
   const [openDialog, setOpenDialog] = useState(false);
-
+  const navigate=useNavigate();
   // Form data state
   const [formData, setFormData] = useState({
     location: "",
@@ -114,8 +115,9 @@ function CreateTrip() {
       tripData: JSON.parse(TripData),
       userEmail:user?.email,
       id:docID
-
     });
+    setLoading(false);
+    navigate('/view-trip/'+docID)
   }
 
   const GetUserProfile=(tokenInfo)=>{
