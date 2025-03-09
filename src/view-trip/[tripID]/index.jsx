@@ -5,6 +5,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import { db } from '@/service/firebaseConfig';
 import DataSection from './components/dataSection';
 import Hotel from './components/hotel';
+import Itinerary from './components/itinerary';
 
 
 export default function Viewtrip() {
@@ -39,7 +40,7 @@ export default function Viewtrip() {
         {/*Recommended Hotels*/}
         <Hotel trip ={trip}/>
         {/*Daily plan*/}
-
+            <Itinerary trip={trip}/>
         {/*Footer*/}
     </div>
   )
